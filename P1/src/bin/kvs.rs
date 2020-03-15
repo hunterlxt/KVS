@@ -2,12 +2,9 @@ use clap::{App, AppSettings, Arg, SubCommand};
 use std::process::exit;
 
 fn main() {
-    let matches = App::new(env!("CARGO_PKG_NAME"))
+    let matches = App::new("My kvs")
         .version(env!("CARGO_PKG_VERSION"))
-        .author(env!("CARGO_PKG_AUTHORS"))
-        .about(env!("CARGO_PKG_DESCRIPTION"))
         .setting(AppSettings::SubcommandRequiredElseHelp)
-        .setting(AppSettings::VersionlessSubcommands)
         .subcommand(
             SubCommand::with_name("set")
                 .about("Set the value of a string key to a string")
@@ -29,18 +26,19 @@ fn main() {
                 .arg(Arg::with_name("KEY").help("A string key").required(true)),
         )
         .get_matches();
+
     match matches.subcommand() {
         ("set", Some(_matches)) => {
             eprintln!("unimplemented");
-            exit(1);
+            exit(-1);
         }
         ("get", Some(_matches)) => {
             eprintln!("unimplemented");
-            exit(1);
+            exit(-1);
         }
         ("rm", Some(_matches)) => {
             eprintln!("unimplemented");
-            exit(1);
+            exit(-1);
         }
         _ => unreachable!(),
     }

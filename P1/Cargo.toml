@@ -5,7 +5,7 @@ authors = ["TXXT <hunterlxt@live.com>"]
 edition = "2018"
 
 [dependencies]
-clap = "2.0"
+clap = "2"
 
 [dev-dependencies]
 assert_cmd = "0"

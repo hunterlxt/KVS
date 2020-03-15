@@ -1,29 +1,24 @@
 use std::collections::HashMap;
 
-/// KvStore stores key/value in memory
 #[derive(Default)]
 pub struct KvStore {
     inner: HashMap<String, String>,
 }
 
 impl KvStore {
-    /// create a new KvStore
     pub fn new() -> KvStore {
         KvStore::default()
     }
 
-    /// set key/value
-    pub fn set(&mut self, k: String, v: String) {
-        let _ = self.inner.insert(k, v);
+    pub fn set(&mut self, key: String, value: String) {
+        self.inner.insert(key, value);
     }
 
-    /// get value from key
-    pub fn get(&self, k: String) -> Option<String> {
-        self.inner.get(&k).cloned()
+    pub fn get(&mut self, key: String) -> Option<String> {
+        self.inner.get(&key).map(|v| v.clone())
     }
 
-    /// remove the key/value
-    pub fn remove(&mut self, k: String) {
-        let _ = self.inner.remove(&k);
+    pub fn remove(&mut self, key: String) {
+        self.inner.remove(&key);
     }
 }
